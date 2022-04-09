@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .card {
+        box-shadow: -1px 2px 10px -4px rgba(0, 0, 0, 0.75);
+        -webkit-box-shadow: -1px 2px 10px -4px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: -1px 2px 10px -4px rgba(0, 0, 0, 0.75);
+    }
+
+    .row{
+        margin-bottom: 30px;
+    }
+    .first-row{
+        margin-top:40px;
+    }
+
+   
+</style>
+
+<div class="row justify-content-center first-row">
+    <div class="col">
+
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+
+                {% for slide in sliders %}
+                <div class="carousel-item {% if forloop.counter is 1 %}  active {% endif %}">
+                    <img src="{{ slide.photo.url }}" class="d-block w-100 " alt="..." style="height:500px;">
+                    <div class="carousel-caption float-start">
+                        <h5>{{ slide.headline }}</h5>
+                        <p>{{ slide.subtitle }}</p>
+                        <a class="btn btn-primary" href="{{ slide.url }}" target="_blank">{{ slide.button_text}}</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+
+
+    </div>
+</div>
+<div class="container">
+   
+
+
+
+
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <div class="input-group mb-5">
+
+                <input type="text" class="form-control" placeholder="Enter Keywords" aria-label="Username"
+                    aria-describedby="basic-addon1">
+                <input type="submit" class="btn btn-primary" value="Search">
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-4 text-center">
+            <h3>Featured YTubers</h3>
+            YTubers that did extra ordinary last month
+        </div>
+    </div>
+
+
+    <!-- Featured Youtubers -->
+    <div class="row justify-content-center">
+        {% for featured_youtuber in featured_youtubers %}
+        <div class="col-3">
+            <div class="card" style="width: 18rem;">
+                <img src="{{ featured_youtuber.photo.url }}" style="width:100%;height:250px;" class="card-img-top"
+                    alt="...">
+                <div class="card-body text-center ">
+                    <b class="card-title ">{{ featured_youtuber.name }} </b>
+                    <p style="color:rgb(0, 146, 0);"> {{ featured_youtuber.subs_count }} subscribers </p>
+                </div>
+
+
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Latest onboard Youtubers -->
+    <div class="row justify-content-center">
+        <div class="col-4 text-center">
+            <h3>Latest On Board YTubers</h3>
+            YTubers who recently got onboard with us
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        {% for lst_ytubers in latest_on_board_youtubers %}
+        <div class="col-3">
+            <div class="card" style="width: 18rem;">
+                <img src="{{ lst_ytubers.photo.url }}" style="width:100%;height:250px;" class="card-img-top" alt="...">
+                <div class="card-body text-center ">
+                    <b class="card-title">{{ lst_ytubers.name }} </b>
+                    <p style="color:purple;">Category:  {{ lst_ytubers.category }} </p>
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+    <!-- Team Section -->
+    <div class="row justify-content-center">
+      <div class="col-4">
+            <h3 class="text-center">Our Amazing Team</h3>
+            <p class="text-center">Meet the team</p>
+        </div>
+    </div>
+
+    <div class="row justify-content-md-center">
+        {% for team in teams %}
+        <div class="col col-lg-3 ">
+            <div class="card" style="width: 18rem;">
+                <img src="{{ team.photo.url }}" style="width:100%;height:250px;" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center" style="color:purple;">{{ team.first_name }} {{ team.last_name }} </h5>
+                    <button class="btn" style="width: 100%;color:green;border: 3px solid green;">{{ team.role }}</button>
+                    <div class="text-center">
+                        <a class="btn btn-link btn-floating btn-sm text-dark m-1" href="{{ team.github_link }}"
+                            target="_blank" role="button" data-mdb-ripple-color="dark"><i class="fab fa-github"></i></a>
+                        <a class="btn btn-link btn-floating btn-sm text-dark m-1" href="{{ team.insta_link }}"
+                            target="_blank" role="button" data-mdb-ripple-color="dark"><i
+                                class="fab fa-instagram"></i></a>
+                        <a class="btn btn-link btn-floating btn-sm text-dark m-1" href="{{ team.youtube_link }}"
+                            target="_blank" role="button" data-mdb-ripple-color="dark"><i
+                                class="fab fa-youtube"></i></a>
+                        <a class="btn btn-link btn-floating btn-sm text-dark m-1" href="{{ team.fb_link }}"
+                            target="_blank" role="button" data-mdb-ripple-color="dark"><i
+                                class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}
