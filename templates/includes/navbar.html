@@ -1,22 +1,25 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark  fixed-top " style="margin-bottom: 20px;">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="#">Tubers</a>
+      <a class="navbar-brand" href="{% url 'home' %}">Tubers</a>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Abouts</a>
+            <a class="nav-link" href="{% url 'about' %}">Abouts</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link">Services</a>
+            <a class="nav-link" href="{% url 'services' %}" >Services</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link">Contact us</a>
+            <a class="nav-link" href="{% url 'youtubers' %}" >Ytubers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'contact' %}">Contact us</a>
           </li>
         </ul>
    

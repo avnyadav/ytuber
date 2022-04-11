@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .tuber-content-deatil {
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+
+    .row {
+        margin-bottom: 50px;
+    }
+</style>
+
+<div class="row"
+    style='background-image: url("https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2017/02/Photoshop-Replace-Background-Featured.jpg");'>
+    <div class="col-12">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">Search result</h1>
+            <p class="col-md-8 fs-4">We have found below youtubers based on your search criteria.</p>
+            <a class="btn btn-primary btn-lg" href="{% url 'home' %}" target="_blank">Home </a>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="container-fluid ">
+    <form action="{% url 'search' %}" method="GET">
+    <div class="row tuber-content-deatil justify-content-center  bg-light" style="padding:30px;">
+        <div class="col-12" style="margin-bottom: 30px;" >
+
+            <input type="text" name="keyword" class="form-control" placeholder="Enter Keywords" aria-label="keyword"
+            aria-describedby="basic-addon1" />
+        </div>
+        <div class="col-4">
+
+
+            <div class="form-group">
+                <select class="form-select"  name="city" aria-label="Default select example">
+                    <option selected disabled hidden>Open this select city</option>
+                    {% for city in city_search %}
+                    <option value="{{ city }}">{{city}}</option>
+                    {% endfor %}
+
+                  
+                </select>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <select class="form-select" name="camera_type" aria-label="Default select example">
+                   
+                    <option selected disabled hidden>Open this select camera</option>
+                    {% for camera_type in camera_type_search %}
+                    <option value="{{ camera_type }}">{{camera_type}}</option>
+                    {% endfor %}
+
+                </select>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <select class="form-select" name="category" aria-label="Default select example">
+                    <option selected disabled hidden>Open this select category</option>
+                    {% for category in category_search %}
+                    <option value="{{ category }}">{{category}}</option>
+                    {% endfor %}
+
+                </select>
+            </div>
+        </div>
+
+
+        <div class="col-4" style="margin-top: 30px;">
+            <input type="submit" class="btn btn-primary " value="Search" style="width:100%">
+        </div>
+    </div>
+    </form>
+</div>
+
+
+
+<div class="row justify-content-center tuber-content-deatil">
+    {% for tuber in tubers %}
+    <div class="col-3" id="tuber-card" style="margin-bottom: 50px;">
+        <div class="card text-center">
+
+            <a href="{% url 'youtubers_detail' tuber.id %}">
+                <img src="{{ tuber.photo.url }}" style="width:100%;height:250px;" class="card-img-top" alt="...">
+            </a>
+            <p style="padding-top:5px;">{{ tuber.name | stringformat:".20s" }} {% if tuber.name|length > 20 %}...{%endif %} </p>
+            <!-- <p style="color:rgb(0, 146, 0);"> {{ tuber.subs_count }} subscribers </p> -->
+
+
+
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+
+{% endblock %}

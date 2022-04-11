@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    iframe,
+    table:hover {
+        border-radius: 10px;
+        box-shadow: -1px 2px 10px -4px rgba(0, 0, 0, 0.75);
+        -webkit-box-shadow: -1px 2px 10px -4px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: -1px 2px 10px -4px rgba(0, 0, 0, 0.75);
+    }
+
+    .tuber-content-deatil {
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+
+    .row {
+        margin-bottom: 30px;
+    }
+</style>
+<div class="row"
+    style='height:300px;background-image: url("https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2017/02/Photoshop-Replace-Background-Featured.jpg");'>
+    <div class="col-12">
+        <div class="container-fluid py-5">
+            <h1 class=" text-center"> {{tuber.name}}</h1>
+        </div>
+
+    </div>
+</div>
+
+<!-- 2nd row of youtubers details -->
+
+<div class="row tuber-content-deatil">
+    <div class="col-4 align-middle">
+        <img src="{{ tuber.photo.url }}" style="border-radius: 10%;" width="70%" height="200px"
+            alt="{{ tuber.name }}" />
+
+    </div>
+    <div class="col-4">
+        <div class="container-fluid py-4" style="padding:100px">
+            <h5 class=" fw-bold text-center " style="padding: 20px;font-size: 24px;">{{tuber.name}}</h5>
+
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="container-fluid py-4" style="padding:100px">
+            <h1 class="display-5 fw-bold " style="padding: 20px;font-size: 24px;"> Subscriber {{tuber.subs_count}}</h1>
+
+        </div>
+    </div>
+
+
+</div>
+<!-- video of youtuber -->
+
+
+<div class="row tuber-content-deatil">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <iframe width="100%" height="300px" src="https://www.youtube.com/embed/{{ tuber.video_url }}"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-4 text-center">
+        <h3>About YTubers</h3>
+        Description about our amazing youtuber
+    </div>
+</div>
+
+<!-- ytuber info in table  -->
+
+<div class="row tuber-content-deatil ">
+    <div class="col-12">
+        <table class="table bg-light">
+            <thead>
+                <tr>
+
+                    <th scope="col">City</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Height</th>
+                    <th scope="col">Crew</th>
+                    <th scope="col">Camera</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Subscriber</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+
+                    <td>{{ tuber.city}}</td>
+                    <td>{{ tuber.age }}</td>
+                    <td>{{ tuber.height }}</td>
+                    <td>{{ tuber.crew }}</td>
+                    <td>{{ tuber.camera_type }}</td>
+                    <td>$ {{ tuber.price }}</td>
+                    <td>{{ tuber.subs_count }}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- description of youtubers -->
+
+<div class="row tuber-content-deatil">
+
+    <div class="col-12">
+        <div class="h-100 p-5 bg-light border rounded-3" s>
+            <h2>Description</h2>
+            <p>{{ tuber.description|safe }}</p>
+
+        </div>
+    </div>
+</div>
+
+<!-- Contact with us  -->
+<div class="row justify-content-center">
+    <div class="col-4 text-center">
+        <h3>Contact Us</h3>
+        Fill the Form and reach out
+    </div>
+</div>
+
+
+<!-- form section  -->
+
+
+<div class="row tuber-content-deatil">
+
+    <div class="col-6">
+        
+        <div class="mb-3">
+            <label  class="form-label">First Name</label>
+            <input type="text" class="form-control"  placeholder="Write your first name">
+        </div>
+        <div class="mb-3">
+            <label  class="form-label">Last Name</label>
+            <input type="text" class="form-control"  placeholder="Write your last name">
+        </div>
+        <div class="mb-3">
+            <label  class="form-label">Email address</label>
+            <input type="email" class="form-control"  placeholder="Write your emailid: name@example.com">
+        </div>
+        </div>
+        <div class="col-6">
+
+        <div class="mb-3">
+            <label class="form-label">City</label>
+            <input type="text" class="form-control"  placeholder="Your city">
+        </div>
+        <div class="mb-3">
+            <label  class="form-label">State</label>
+            <input type="text" class="form-control"  placeholder="Your state">
+        </div>
+        <div class="mb-3">
+            <label  class="form-label">Phone number</label>
+            <input type="text" class="form-control"  placeholder="Phone number">
+        </div>
+        </div>
+        <div class="col-12">
+        <div class="mb-3">
+            <label  class="form-label">Details Message</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write detail message."></textarea>
+        </div>
+        <div class="mb-3">
+         
+            <input class="form-control btn btn-primary" type="submit" value="Contact Us"/>
+        </div>
+    </div>
+</div>
+
+<div>
+
+</div>
+
+{% endblock %}
