@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<style>
+.tuber-content-deatil {
+    margin-left: 15%;
+    margin-right: 15%;
+}
+tr:hover {
+    box-shadow: -1px 2px 10px -4px rgba(0, 0, 0, 0.75);
+        -webkit-box-shadow: -1px 2px 10px -4px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: -1px 2px 10px -4px rgba(0, 0, 0, 0.75);
+}
+
+.row {
+    margin-bottom: 50px;
+}</style>
+<div class="row"
+    style='background-image: url("https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2017/02/Photoshop-Replace-Background-Featured.jpg");'>
+    <div class="col-12">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">Dashboard</h1>
+            <p class="col-md-8 fs-4">Welcome {{ user.first_name }}!</p>
+          
+            <a class="btn btn-primary btn-lg" href="{% url 'home' %}" target="_blank">Home </a>
+        </div>
+
+    </div>
+</div>
+
+    <!-- Latest onboard Youtubers -->
+    <div class="row justify-content-center">
+        <div class="col-4 text-center">
+            <h3>Latest On Board YTubers</h3>
+            YTubers who recently got onboard with us
+        </div>
+    </div>
+
+
+<div class="row tuber-content-deatil ">
+    <div class="col-12">
+        <table class="table bg-light">
+            <thead>
+                <tr>
+
+                    <th scope="col">City</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Height</th>
+                    <th scope="col">Crew</th>
+                    <th scope="col">Camera</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Subscriber</th>
+                    <th scope="col">Visit</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tuber in youtubers %}
+                <tr>
+
+                    <td>{{ tuber.city}}</td>
+                    <td>{{ tuber.age }}</td>
+                    <td>{{ tuber.height }}</td>
+                    <td>{{ tuber.crew }}</td>
+                    <td>{{ tuber.camera_type }}</td>
+                    <td>$ {{ tuber.price }}</td>
+                    <td>{{ tuber.subs_count }}</td>
+                    <td>  <a class="btn btn-primary" href="{% url 'youtubers_detail' tuber.id %}"> Go to Page</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}

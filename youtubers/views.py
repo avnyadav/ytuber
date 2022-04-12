@@ -3,10 +3,19 @@ from django.shortcuts import render,get_object_or_404
 from .models import Youtuber
 # Create your views here.
 from collections import namedtuple
+
+
 def youtubers(request):
     tubers = Youtuber.objects.order_by("-created_date")
+    city_search  = Youtuber.objects.values_list('city',flat=True).distinct()
+    camera_type_search  = Youtuber.objects.values_list('camera_type',flat=True).distinct()
+    category_search  = Youtuber.objects.values_list('category',flat=True).distinct()
+    
     data={
-        "tubers": tubers
+        "tubers": tubers,
+        'city_search':city_search,
+        'camera_type_search':camera_type_search,
+        'category_search':category_search,
     }
     return render(request, "youtubers/youtubers.html", data)
 
@@ -16,6 +25,7 @@ def youtubers_detail(request, id:int):
     tuber_key="tuber"
     data ={
         tuber_key: tuber
+
     }
 
     return render(request, "youtubers/youtuber_detail.html", data)

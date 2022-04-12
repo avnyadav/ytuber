@@ -131,51 +131,62 @@
 
 <!-- form section  -->
 
-
+<form action="{% url 'hiretuber' %}" method="POST">
+    {% csrf_token %}
 <div class="row tuber-content-deatil">
 
-    <div class="col-6">
+        <div class="col-6">
         
         <div class="mb-3">
             <label  class="form-label">First Name</label>
-            <input type="text" class="form-control"  placeholder="Write your first name">
+            <input type="text" class="form-control"  placeholder="Write your first name" name="first_name" required>
         </div>
         <div class="mb-3">
             <label  class="form-label">Last Name</label>
-            <input type="text" class="form-control"  placeholder="Write your last name">
+            <input type="text" class="form-control"  placeholder="Write your last name" name="last_name" required>
         </div>
         <div class="mb-3">
             <label  class="form-label">Email address</label>
-            <input type="email" class="form-control"  placeholder="Write your emailid: name@example.com">
+            <input type="email" class="form-control"  placeholder="Write your emailid: name@example.com" name="email" value = "{% if user.is_authenticated %} {{user.email}} {% else %}   {% endif %}" required>
         </div>
         </div>
         <div class="col-6">
 
         <div class="mb-3">
             <label class="form-label">City</label>
-            <input type="text" class="form-control"  placeholder="Your city">
+            <input type="text" class="form-control"  placeholder="Your city" name="city" required>
         </div>
         <div class="mb-3">
             <label  class="form-label">State</label>
-            <input type="text" class="form-control"  placeholder="Your state">
+            <input type="text" class="form-control"  placeholder="Your state" name="state" required>
         </div>
         <div class="mb-3">
             <label  class="form-label">Phone number</label>
-            <input type="text" class="form-control"  placeholder="Phone number">
+            <input type="text" class="form-control"  placeholder="Phone number" name="phone_number" required>
         </div>
         </div>
         <div class="col-12">
         <div class="mb-3">
             <label  class="form-label">Details Message</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write detail message."></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write detail message." name="message"></textarea>
         </div>
+        <div class="mb-3">
+         
+            <input class="form-control btn btn-primary" type="hidden" name="tuber_id" value="{{ tuber.id}}"/>
+        </div>
+    
+        <div class="mb-3">
+         
+            <input class="form-control btn btn-primary" type="hidden" name="user_id" value= "{% if user.is_authenticated %} {{user.id}} {% else %}  00 {% endif %}" />
+        </div>
+
         <div class="mb-3">
          
             <input class="form-control btn btn-primary" type="submit" value="Contact Us"/>
         </div>
     </div>
 </div>
-
+</form>
 <div>
 
 </div>

@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+{% load socialaccount %}
+{% providers_media_js %}
+
+
+<style>
+    #login-form {
+        margin:50px;
+       padding:50px;
+       border-radius: 10px;
+        box-shadow: -1px 2px 10px -4px rgba(0, 0, 0, 0.75);
+        -webkit-box-shadow: -1px 2px 10px -4px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: -1px 2px 10px -4px rgba(0, 0, 0, 0.75);
+        background-color: rgba(255, 255, 255, 0.811);
+       }
+</style>
+
+<!-- <div class="row"  style='background-image: url("https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2017/02/Photoshop-Replace-Background-Featured.jpg");'>
+    <div class="col-5">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">Search result</h1>
+            <p class="col-md-8 fs-4">We have found below youtubers based on your search criteria.</p>
+            <a class="btn btn-primary btn-lg" href="{% url 'home' %}" target="_blank">Home </a>
+        </div>
+
+    </div>
+</div> -->
+
+
+
+<div class="row justify-content-center tuber-content-deatil"  style='background-image: url("ttps://static1.makeuseofimages.com/wordpress/wp-content/uploads/2017/02/Photoshop-Replace-Background-Featured.jpg");'>
+    
+    
+    <div class="col-5">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">Hey There, Welcome!</h1>
+            <p class="col-md-8 fs-4">Love is the attempt to form a friendship inspired by beauty</p>
+            <a class="btn btn-primary btn-lg" href="{% url 'home' %}" target="_blank">Home </a>
+        </div>
+
+    </div>
+    <div class="col-4" id="login-form">
+    <form action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Login</legend>
+            <div class="mb-3">
+                <label class="form-label">User Name</label>
+                <input type="text" class="form-control" id="emaild-id" name="username" placeholder="Write user name" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" id="password-id" name="password" placeholder="Write your passowrd" required>
+            </div>
+
+            <div class="mb-3">
+                
+                <input type="submit" class="form-control btn btn-primary" value="Sign In">
+            </div>
+
+            <h3 class="text-center">OR Login using</h3>
+            <div class="mb-3">
+                <a href='{% provider_login_url "facebook" method="oauth2" %}' class=" form-control  btn btn-primary">Facebook Login</a>
+            </div>
+
+        </fieldset>
+    </form>
+    </div>
+</div>
+
+{% endblock %}

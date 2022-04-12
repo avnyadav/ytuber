@@ -48,6 +48,11 @@
        
     </div>
 </div>
+
+
+
+
+
 <div class="container">
     <div class="row tubers-content">
         <div class="col-9">
@@ -76,34 +81,41 @@
         </div>
 
         <div class="col-3">
-            <form>
+            <form action="{% url 'search' %}" method="GET">
+                <input type="hidden" name="keyword" class="form-control" placeholder="Enter Keywords" aria-label="keyword"
+                aria-describedby="basic-addon1" />
                 <div class="form-group">
                     <label for="exampleInputEmail1">Search Tubers</label>
                 </div>
 
                 <div class="form-group">
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <select class="form-select"  name="city" aria-label="Default select example">
+                        <option selected disabled hidden>Open this select city</option>
+                        {% for city in city_search %}
+                        <option value="{{ city }}">{{city}}</option>
+                        {% endfor %}
+    
+                      
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <select class="form-select" name="camera_type" aria-label="Default select example">
+                   
+                        <option selected disabled hidden>Open this select camera</option>
+                        {% for camera_type in camera_type_search %}
+                        <option value="{{ camera_type }}">{{camera_type}}</option>
+                        {% endfor %}
+    
                     </select>
                 </div>
                 <div class="form-group">
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <select class="form-select" name="category" aria-label="Default select example">
+                        <option selected disabled hidden>Open this select category</option>
+                        {% for category in category_search %}
+                        <option value="{{ category }}">{{category}}</option>
+                        {% endfor %}
+    
                     </select>
                 </div>
                 <div class="form-group">

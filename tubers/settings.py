@@ -26,14 +26,19 @@ SECRET_KEY = 'django-insecure-bb5cr(9wi8oq66)ia0&d0c-g#0-r)lk_so1r_hlj^+(fps8diw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["0.0.0.0","localhost","127.0.0.1"]
 
+LOGIN_REDIRECT_URL = 'dashboard'
 
 # Application definition
 
 INSTALLED_APPS = [
+    
+    "sslserver",
+    'accounts.apps.AccountsConfig',
     'youtubers.apps.YoutubersConfig',
     'webpages.apps.WebpagesConfig',
+    "hiretubers.apps.HiretubersConfig",
     'djangocms_admin_style',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -42,6 +47,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ckeditor',
+
+    'django.contrib.sites', #added to support django-allauth
+    #adding below lines to enable social login 
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google', #to enable google login
+    'allauth.socialaccount.providers.facebook', #to enable facebook login
 ]
 
 MIDDLEWARE = [
@@ -142,3 +155,5 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SITE_ID = 1 #added to support django-allauth

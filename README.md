@@ -106,3 +106,15 @@ python manage.py startapp <app_name>
 ```
 pip install ckeditor
 ```
+
+To run project with https use below module
+```
+pip install django-sslserver
+```
+
+add enty to INSTALLED_APPS in root settings.py file "sslserver"
+
+Launch Django app using below command
+```
+python manage.py runsslserver 127.0.0.1:8000
+```

@@ -1,6 +1,94 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
-About Page
+<style>
+        .tuber-content-deatil {
+        margin-left: 15%;
+        margin-right: 15%;
+        margin-bottom: 50px;
+        padding:50px;
+    }
+</style>
+<div class="row justify-content-center"
+    style='background-image: url("https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2017/02/Photoshop-Replace-Background-Featured.jpg");height:250px;'>
+    <div class="col-12">
+        <div class="container-fluid py-5 ">
+            <h1 class="display-5 fw-bold text-center">About Us </h1>
 
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="jumbotron  tuber-content-deatil bg-light "  >
+    <div class="row">
+        <div class="col-8">
+            <h1 class="display-4">iNeuron Vision</h1>
+            <p class="lead">A product-driven organization working on state-of-the-art projects for our domestic and international clients, carrying a lot of expertise in product development in the area of Computer vision, Deep learning, NLP, Auto ML and Machine learning with industry expertise in Warehousing, Security, Surveillance, Healthcare and Inventory management. Explore solutions of various domains to get more insights.</p>
+            <hr class="my-4">
+           <p class="lead">
+                <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+            </p>
+        </div>
+        <div class="col-4">
+            <img src="https://ineuron.ai/images/vision2.png" class="img-fluid" alt="Responsive image" width="100%" style="margin:auto">
+        </div>
+    </div>
+</div>
+
+
+<div class="jumbotron  tuber-content-deatil bg-light "   style="background-image: linear-gradient(rgba(79, 216, 243, 0.1), rgba(255, 255, 255, 0.8));">
+    <div class="row">
+        <div class="col-4">
+            <img src="https://static.timesofisrael.com/www/uploads/2019/12/iStock-1029035836-e1575983057612.jpg" width="100%" style="margin:auto" class="img-fluid" alt="Responsive image">
+        </div>
+        <div class="col-8">
+            <h1 class="display-4">About our Students</h1>
+            <p class="lead"> Many of our students have demonstrated that there is no substitute for a hard effort. If one works hard enough, any goal can be achieved. iNeuron offers you all of these services in one place at the most affordable and competitive pricing anywhere on the planet.</p>
+  
+            <hr class="my-4">
+     
+        </div>
+       
+    </div>
+</div>
+
+
+
+<!-- Team Section -->
+<div class="row justify-content-center ">
+    <div class="col-4">
+        <h3 class="text-center">Our Amazing Team</h3>
+        <p class="text-center">Meet the team</p>
+    </div>
+</div>
+
+<div class="row justify-content-md-center  tuber-content-deatil " style="margin-top:0px;">
+    {% for team in teams %}
+    <div class="col col-lg-3 ">
+        <div class="card" style="width: 18rem;">
+            <img src="{{ team.photo.url }}" style="width:100%;height:250px;" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title text-center" style="color:purple;">{{ team.first_name }} {{ team.last_name }}
+                </h5>
+                <button class="btn" style="width: 100%;color:green;border: 3px solid green;">{{ team.role }}</button>
+                <div class="text-center">
+                    <a class="btn btn-link btn-floating btn-sm text-dark m-1" href="{{ team.github_link }}"
+                        target="_blank" role="button" data-mdb-ripple-color="dark"><i class="fab fa-github"></i></a>
+                    <a class="btn btn-link btn-floating btn-sm text-dark m-1" href="{{ team.insta_link }}"
+                        target="_blank" role="button" data-mdb-ripple-color="dark"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-link btn-floating btn-sm text-dark m-1" href="{{ team.youtube_link }}"
+                        target="_blank" role="button" data-mdb-ripple-color="dark"><i class="fab fa-youtube"></i></a>
+                    <a class="btn btn-link btn-floating btn-sm text-dark m-1" href="{{ team.fb_link }}" target="_blank"
+                        role="button" data-mdb-ripple-color="dark"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}
