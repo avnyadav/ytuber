@@ -30,4 +30,9 @@ def services(request):
 
 
 def contact(request):
-    return render(request,'webpages/contact.html')
+    tuber_data  = Youtuber.objects.all()
+    data = {
+        'tuber':tuber_data
+    }
+    
+    return render(request,'webpages/contact.html',data)

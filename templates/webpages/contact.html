@@ -1,6 +1,103 @@
 {% extends "base.html" %}
 
 {% block content %}
-Contact page
+<style>
+ @media all and (max-width: 750px) {
+
+.tuber-content-deatil {
+    margin-left: 0%;
+    margin-right: 0%;
+}
+/* CSS rules here for screens lower than 750px */
+}
+@media all and (min-width: 750px) {
+.tuber-content-deatil {
+    margin-left: 15%;
+    margin-right: 15%;
+}
+/* CSS rules here for screens above 750px */
+}
+</style>
+
+<div class="row justify-content-center"
+    style='background-image: url("https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2017/02/Photoshop-Replace-Background-Featured.jpg");height:250px;'>
+    <div class="col-12">
+        <div class="container-fluid py-5 ">
+            <h1 class="display-5 fw-bold text-center">Contact US</h1>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+<form action="{% url 'hiretuber' %}" method="POST">
+    {% csrf_token %}
+<div class="row tuber-content-deatil">
+
+        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-6">
+        
+        <div class="mb-3">
+            <label  class="form-label">First Name</label>
+            <input type="text" class="form-control"  placeholder="Write your first name" name="first_name" required>
+        </div>
+        <div class="mb-3">
+            <label  class="form-label">Last Name</label>
+            <input type="text" class="form-control"  placeholder="Write your last name" name="last_name" required>
+        </div>
+        <div class="mb-3">
+            <label  class="form-label">Email address</label>
+            <input type="email" class="form-control"  placeholder="Write your emailid: name@example.com" name="email" value = "{% if user.is_authenticated %} {{user.email}} {% else %}   {% endif %}" required>
+        </div>
+        </div>
+        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-6">
+
+        <div class="mb-3">
+            <label class="form-label">City</label>
+            <input type="text" class="form-control"  placeholder="Your city" name="city" required>
+        </div>
+        <div class="mb-3">
+            <label  class="form-label">State</label>
+            <input type="text" class="form-control"  placeholder="Your state" name="state" required>
+        </div>
+        <div class="mb-3">
+            <label  class="form-label">Phone number</label>
+            <input type="text" class="form-control"  placeholder="Phone number" name="phone_number" required>
+        </div>
+        </div>
+        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+            <div class="mb-3">
+
+                <select class="form-control" name="tuber_id">
+                    <option selected disabled hidden>Open this select youtuber</option>
+                    {% for tuber_record in tuber %}
+                    <option value="{{ tuber_record.id }}">{{tuber_record.name}}</option>
+                    {% endfor %}
+
+                </select>
+            </div>
+        <div class="mb-3">
+            <label  class="form-label">Details Message</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write detail message." name="message"></textarea>
+        </div>
+        <div class="mb-3">
+         
+            <input class="form-control btn btn-primary" type="hidden" name="tuber_id" value="{{ tuber.id}}"/>
+        </div>
+    
+        <div class="mb-3">
+         
+            <input class="form-control btn btn-primary" type="hidden" name="user_id" value= "{% if user.is_authenticated %} {{user.id}} {% else %}  00 {% endif %}" />
+        </div>
+
+        <div class="mb-3">
+         
+            <input class="form-control btn btn-primary" type="submit" value="Contact Us"/>
+        </div>
+    </div>
+</div>
+</form>
+
 
 {% endblock %}

@@ -55,32 +55,7 @@
 
 <div class="container">
     <div class="row tubers-content">
-        <div class="col-9">
-            <div class="row">
-                <div class="row justify-content-center">
-                    {% for tuber in tubers %}
-                    <div class="col-4" id="tuber-card">
-                        <div class="card text-center">
-                          
-                            <a href="{% url 'youtubers_detail' tuber.id %}"> 
-                            <img src="{{ tuber.photo.url }}" style="width:100%;height:200px;" class="card-img-top"
-                                alt="...">
-                                </a>
-                                <p style="padding-top:5px;">{{ tuber.name | stringformat:".20s" }} {% if tuber.name|length > 20 %}...{% endif %} </p>
-                                <!-- <p style="color:rgb(0, 146, 0);"> {{ tuber.subs_count }} subscribers </p> -->
-             
-
-
-                        
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-
-        </div>
-
-        <div class="col-3">
+        <div class="col-lg-3 col-md-6 col-xs-12 col-sm-12 " style="margin-bottom: 30px;">
             <form action="{% url 'search' %}" method="GET">
                 <input type="hidden" name="keyword" class="form-control" placeholder="Enter Keywords" aria-label="keyword"
                 aria-describedby="basic-addon1" />
@@ -124,6 +99,32 @@
             </form>
 
         </div>
+        <div class="col-lg-9 col-md-6 col-xs-12 col-sm-12 ">
+            <div class="row">
+                <div class="row justify-content-center">
+                    {% for tuber in tubers %}
+                    <div class="col-lg-4 col-md-6 col-xs-12 col-sm-12 " id="tuber-card">
+                        <div class="card text-center" style="width:100%">
+                          
+                            <a href="{% url 'youtubers_detail' tuber.id %}"> 
+                            <img src="{{ tuber.photo.url }}" style="width:100%;height:200px;" class="card-img-top"
+                                alt="...">
+                                </a>
+                                <p style="padding-top:5px;">{{ tuber.name | stringformat:".20s" }} {% if tuber.name|length > 20 %}...{% endif %} </p>
+                                <!-- <p style="color:rgb(0, 146, 0);"> {{ tuber.subs_count }} subscribers </p> -->
+             
+
+
+                        
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+
+  
 
     </div>
 

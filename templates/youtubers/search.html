@@ -2,10 +2,24 @@
 {% load static %}
 {% block content %}
 <style>
-    .tuber-content-deatil {
-        margin-left: 15%;
-        margin-right: 15%;
-    }
+  @media all and (max-width: 750px) {
+
+.tuber-content-deatil {
+    margin-left: 0%;
+    margin-right: 0%;
+}
+/* CSS rules here for screens lower than 750px */
+}
+@media all and (min-width: 750px) {
+.tuber-content-deatil {
+    margin-left: 15%;
+    margin-right: 15%;
+}
+/* CSS rules here for screens above 750px */
+}
+select{
+    margin-bottom: 30px;
+}
 
     .row {
         margin-bottom: 50px;
@@ -14,10 +28,10 @@
 
 <div class="row"
     style='background-image: url("https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2017/02/Photoshop-Replace-Background-Featured.jpg");'>
-    <div class="col-12">
+    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 ">
         <div class="container-fluid py-5">
             <h1 class="display-5 fw-bold">Search result</h1>
-            <p class="col-md-8 fs-4">We have found below youtubers based on your search criteria.</p>
+            <p class="fs-4">We have found below youtubers based on your search criteria.</p>
             <a class="btn btn-primary btn-lg" href="{% url 'home' %}" target="_blank">Home </a>
         </div>
 
@@ -28,12 +42,12 @@
 <div class="container-fluid ">
     <form action="{% url 'search' %}" method="GET">
     <div class="row tuber-content-deatil justify-content-center  bg-light" style="padding:30px;">
-        <div class="col-12" style="margin-bottom: 30px;" >
+        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-bottom: 30px;" >
 
             <input type="text" name="keyword" class="form-control" placeholder="Enter Keywords" aria-label="keyword"
             aria-describedby="basic-addon1" />
         </div>
-        <div class="col-4">
+        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-4">
 
 
             <div class="form-group">
@@ -47,7 +61,7 @@
                 </select>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-4">
             <div class="form-group">
                 <select class="form-select" name="camera_type" aria-label="Default select example">
                    
@@ -59,7 +73,7 @@
                 </select>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-4">
             <div class="form-group">
                 <select class="form-select" name="category" aria-label="Default select example">
                     <option selected disabled hidden>Open this select category</option>
@@ -72,7 +86,7 @@
         </div>
 
 
-        <div class="col-4" style="margin-top: 30px;">
+        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-4" >
             <input type="submit" class="btn btn-primary " value="Search" style="width:100%">
         </div>
     </div>
@@ -83,8 +97,8 @@
 
 <div class="row justify-content-center tuber-content-deatil">
     {% for tuber in tubers %}
-    <div class="col-3" id="tuber-card" style="margin-bottom: 50px;">
-        <div class="card text-center">
+    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-3" id="tuber-card" style="margin-bottom: 50px;">
+        <div class="card text-center" style="width:100%">
 
             <a href="{% url 'youtubers_detail' tuber.id %}">
                 <img src="{{ tuber.photo.url }}" style="width:100%;height:250px;" class="card-img-top" alt="...">

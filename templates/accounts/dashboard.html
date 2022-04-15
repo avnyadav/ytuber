@@ -3,9 +3,25 @@
 {% block content %}
 
 <style>
+
+@media all and (max-width: 750px) {
+
+.tuber-content-deatil {
+    margin-left: 0%;
+    margin-right: 0%;
+}
+/* CSS rules here for screens lower than 750px */
+}
+@media all and (min-width: 750px) {
 .tuber-content-deatil {
     margin-left: 15%;
     margin-right: 15%;
+}
+/* CSS rules here for screens above 750px */
+}
+.table{
+    width: 100%;
+   
 }
 tr:hover {
     box-shadow: -1px 2px 10px -4px rgba(0, 0, 0, 0.75);
@@ -18,10 +34,10 @@ tr:hover {
 }</style>
 <div class="row"
     style='background-image: url("https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2017/02/Photoshop-Replace-Background-Featured.jpg");'>
-    <div class="col-12">
+    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 ">
         <div class="container-fluid py-5">
             <h1 class="display-5 fw-bold">Dashboard</h1>
-            <p class="col-md-8 fs-4">Welcome {{ user.first_name }}!</p>
+            <p class="fs-4">Welcome {% if user.is_superuser %} Admin {% endif %}{{ user.first_name }}!</p>
           
             <a class="btn btn-primary btn-lg" href="{% url 'home' %}" target="_blank">Home </a>
         </div>
@@ -31,16 +47,16 @@ tr:hover {
 
     <!-- Latest onboard Youtubers -->
     <div class="row justify-content-center">
-        <div class="col-4 text-center">
+        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-4  text-center">
             <h3>Latest On Board YTubers</h3>
             YTubers who recently got onboard with us
         </div>
     </div>
 
 
-<div class="row tuber-content-deatil ">
-    <div class="col-12">
-        <table class="table bg-light">
+<div class="row tuber-content-deatil justify-content-center ">
+    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 justify-content-center table-responsive ">
+        <table class="table bg-light flex">
             <thead>
                 <tr>
 
