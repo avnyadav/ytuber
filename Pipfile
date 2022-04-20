@@ -12,6 +12,8 @@ django-ckeditor = "*"
 django-allauth = "*"
 django-extensions = "*"
 django-sslserver = "*"
+pydot = "*"
+pylint = "*"
 
 [dev-packages]
 

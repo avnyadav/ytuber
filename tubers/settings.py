@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google', #to enable google login
     'allauth.socialaccount.providers.facebook', #to enable facebook login
+    'django_extensions',
 ]
 
 MIDDLEWARE = [

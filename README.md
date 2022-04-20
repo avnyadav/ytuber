@@ -118,3 +118,19 @@ Launch Django app using below command
 ```
 python manage.py runsslserver localhost:8000
 ```
+
+To create database diagram
+
+Install a diagram
+```
+sudo apt install python-pygraphviz
+```
+
+Now in your python environment (maybe some virtual environment)
+```
+pip install django-extensions pygraphviz
+```
+
+```
+python manage.py graph_models -a -g -o imagefile_name.png
+```

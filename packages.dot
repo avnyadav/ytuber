@@ -1,0 +1,8 @@
+digraph "packages" {
+rankdir=BT
+charset="utf-8"
+"accounts.models" [color="black", label="accounts.models", shape="box", style="solid"];
+"hiretubers.models" [color="black", label="hiretubers.models", shape="box", style="solid"];
+"webpages.models" [color="black", label="webpages.models", shape="box", style="solid"];
+"youtubers.models" [color="black", label="youtubers.models", shape="box", style="solid"];
+}
