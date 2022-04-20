@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from .models import Slider,Team
 from youtubers.models import Youtuber
+
 # Create your views here.
 def home(request):
+
     sliders = Slider.objects.all()
     teams = Team.objects.all()
     featured_youtubers = Youtuber.objects.order_by('-created_date').filter(is_featured=True)
@@ -13,6 +15,7 @@ def home(request):
         'featured_youtubers':featured_youtubers,
         "latest_on_board_youtubers":latest_on_board_youtubers,
     }
+
     return render(request,'webpages/home.html',data)
 
 

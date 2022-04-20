@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     
     "sslserver",
     'accounts.apps.AccountsConfig',
+  
     'youtubers.apps.YoutubersConfig',
     'webpages.apps.WebpagesConfig',
     "hiretubers.apps.HiretubersConfig",
@@ -158,3 +159,31 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SITE_ID = 1 #added to support django-allauth
+
+LOG_FILE_PATH =  os.path.join("log","debug.log")
+os.makedirs(os.path.join("log"), exist_ok=True)
+
+if not os.path.exists(LOG_FILE_PATH):
+    with open(LOG_FILE_PATH,"w") as f:
+        pass
+    
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': 'log/debug.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}
