@@ -136,3 +136,28 @@ python manage.py graph_models -a -g -o imagefile_name.png
 ```
 
 <iframe width="424" height="238" src="" title="How I started speaking English without fear (as a non-native speaker)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
+
+Description
+Helping people to learn DevOps topics easily 💙
+
+I create new videos every second week, topics include mainly DevOps tutorials. Subscribe and activate bell notification so you don't miss new videos :)
+
+I'm a Docker Captain, AWS Container Hero & CNCF Ambassador 🤓  💪
+
+►  https://www.techworld-with-nana.com/
+
+Tutorials so far
+ - Docker
+ - Kubernetes
+ - Jenkins
+ - Python
+ - Ansible
+ - Prometheus Monitoring
+ - Terraform
+ - YAML
+ - & more!
+
+Have fun watching my videos! 🙂
