@@ -26,7 +26,10 @@ SECRET_KEY = 'django-insecure-bb5cr(9wi8oq66)ia0&d0c-g#0-r)lk_so1r_hlj^+(fps8diw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["0.0.0.0","localhost","127.0.0.1","https://vm-ineuron.herokuapp.com/"]
+
+HOST_URL=os.getenv('HOST_URL')
+
+ALLOWED_HOSTS = ["0.0.0.0","localhost","127.0.0.1",HOST_URL]
 
 LOGIN_REDIRECT_URL = 'dashboard'
 
